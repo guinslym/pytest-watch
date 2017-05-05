@@ -123,7 +123,9 @@ def _show_summary(argv, events, verbose=False):
 
     events = _reduce_events(events)
     if verbose:
-        lines = ['Changes detected at: '+datetime.now().strftime('%M:%S.%f')[:-4]]
+        sentences = 'Changes detected at: '+datetime.now().strftime('%M:%S.%f')[:-4]
+        sentences = str(sentences)
+        lines = [sentences]
         m = max(map(len, map(lambda e: VERBOSE_EVENT_NAMES[e[0]], events)))
         for event, src, dest in events:
             event = VERBOSE_EVENT_NAMES[event].ljust(m)
