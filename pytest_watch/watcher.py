@@ -3,6 +3,7 @@ from __future__ import print_function
 import os
 import subprocess
 import time
+from datetime import datetime
 from traceback import format_exc
 
 try:
@@ -122,7 +123,7 @@ def _show_summary(argv, events, verbose=False):
 
     events = _reduce_events(events)
     if verbose:
-        lines = ['Changes detected:']
+        lines = ['Changes detected at: '+datetime.now().strftime('%M:%S.%f')[:-4]]
         m = max(map(len, map(lambda e: VERBOSE_EVENT_NAMES[e[0]], events)))
         for event, src, dest in events:
             event = VERBOSE_EVENT_NAMES[event].ljust(m)
